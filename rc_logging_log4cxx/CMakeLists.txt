@@ -13,11 +13,14 @@ endif()
 
 find_package(ament_cmake_ros REQUIRED)
 
-set(dependencies
-    log4cxx
-)
+#find_package(log4cxx REQUIRED ../vs6/apache-log4cxx-0.10.0/projects/Debug)
+
+#set(dependencies
+#    log4cxx
+#)
 
 include_directories(${ament_INCLUDE_DIRS})
+include_directories(../../../../../vs6/apache-log4cxx-0.10.0/src/main/include)
 
 if(NOT WIN32)
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -29,6 +32,18 @@ set(${PROJECT_NAME}_sources
 #set_source_files_properties(${${PROJECT_NAME}_sources} PROPERTIES language "CXX")
 
 add_library(${PROJECT_NAME} ${${PROJECT_NAME}_sources})
+#link_directories(../../../../../vs6/apache-log4cxx-0.10.0/projects/Debug)
+#link_directories("C:/dev/vs6/apache-log4cxx-0.10.0/projects/Debug")
+#set(LINK_LIBS log4cxx)
+
+#add_library(log4cxx SHARED IMPORTED)
+#set_target_properties(log4cxx PROPERTIES
+#  IMPORTED_LOCATION C:/dev/vs6/apache-log4cxx-0.10.0/projects/Debug/log4cxx.dll
+#  INTERFACE_INCLUDE_DIRECTORIES C:/dev/vs6/apache-log4cxx-0.10.0/src/main/include
+#)
+
+link_directories(C:\\dev\\vs6\\apache-log4cxx-0.10.0\\projects\\Debug)
+target_link_libraries(${PROJECT_NAME} C:\\dev\\vs6\\apache-log4cxx-0.10.0\\projects\\Debug\\log4cxx.lib)
 
 ament_target_dependencies(${PROJECT_NAME}
     ${dependencies}
