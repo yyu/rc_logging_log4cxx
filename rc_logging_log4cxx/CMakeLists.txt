@@ -13,11 +13,12 @@ endif()
 
 find_package(ament_cmake_ros REQUIRED)
 
-set(dependencies
-    log4cxx
-)
+#set(dependencies
+#    log4cxx
+#)
 
 include_directories(${ament_INCLUDE_DIRS})
+include_directories(C:\\dev\\vendor\\apache-log4cxx-0.10.0\\src\\main\\include)
 
 if(NOT WIN32)
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -29,6 +30,9 @@ set(${PROJECT_NAME}_sources
 #set_source_files_properties(${${PROJECT_NAME}_sources} PROPERTIES language "CXX")
 
 add_library(${PROJECT_NAME} ${${PROJECT_NAME}_sources})
+
+link_directories(C:\\dev\\vendor\\apache-log4cxx-0.10.0\\projects\\Debug)
+target_link_libraries(${PROJECT_NAME} C:\\dev\\vendor\\apache-log4cxx-0.10.0\\projects\\Debug\\log4cxx.lib)
 
 ament_target_dependencies(${PROJECT_NAME}
     ${dependencies}
