@@ -14,6 +14,7 @@ endif()
 find_package(ament_cmake_ros REQUIRED)
 list(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(Log4cxx REQUIRED)
+message(WARN " ---------1--------- . ${Log4cxx_INCLUDE_DIR} . ${Log4cxx_LIBRARIES} . ${CMAKE_MODULE_PATH} . ${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(dependencies
     Log4cxx
